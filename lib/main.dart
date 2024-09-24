@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dist_from_firebase/firebase/remote_config.dart';
 import 'package:flutter_dist_from_firebase/firebase_options.dart';
 import 'package:flutter_dist_from_firebase/pages/sample_page.dart';
 
@@ -8,7 +10,11 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+  await MyAppRemoteConfig.initRemoteConfig();
+  String distVersion = await MyAppRemoteConfig.getDistVersion();
+  if (kDebugMode) {
+    print("dist version = $distVersion");
+  }
   runApp(const MyApp());
 }
 
