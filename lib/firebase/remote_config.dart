@@ -2,7 +2,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:logger/logger.dart';
 
 class MyAppRemoteConfig {
-  static late FirebaseRemoteConfig _remoteConfig;
+  static late final FirebaseRemoteConfig _remoteConfig;
   static Logger log = Logger();
   static Future<void> initRemoteConfig() async {
     _remoteConfig = FirebaseRemoteConfig.instance;
